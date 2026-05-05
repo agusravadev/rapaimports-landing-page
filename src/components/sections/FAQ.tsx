@@ -1,7 +1,7 @@
 'use client'
 
 import * as Accordion from '@radix-ui/react-accordion'
-import { ChevronDown } from 'lucide-react'
+import { Plus } from 'lucide-react'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { FAQ_ITEMS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
@@ -17,7 +17,7 @@ function FAQItem({
     <ScrollReveal delay={index * 0.05}>
       <Accordion.Item
         value={item.id}
-        className="border border-rapa-border rounded-lg overflow-hidden mb-3"
+        className="border border-rapa-border rounded-lg overflow-hidden mb-2 transition-all duration-300 data-[state=open]:border-rapa-red/40"
       >
         <Accordion.Header>
           <Accordion.Trigger
@@ -25,13 +25,19 @@ function FAQItem({
               'w-full flex items-center justify-between gap-4 p-5 text-left group',
               'font-body font-semibold text-white bg-rapa-elevated',
               'hover:bg-rapa-subtle transition-colors duration-200',
+              'data-[state=open]:bg-rapa-red/5',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rapa-red focus-visible:ring-inset'
             )}
           >
-            <span className="text-sm sm:text-base">{item.question}</span>
-            <ChevronDown
+            <span className="flex items-center gap-3 flex-1">
+              <span className="font-mono text-xs text-rapa-red/50 shrink-0 w-6">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span className="text-sm sm:text-base">{item.question}</span>
+            </span>
+            <Plus
               size={18}
-              className="shrink-0 text-rapa-red transition-transform duration-300 group-data-[state=open]:rotate-180"
+              className="shrink-0 text-rapa-red transition-transform duration-300 group-data-[state=open]:rotate-45"
               aria-hidden
             />
           </Accordion.Trigger>

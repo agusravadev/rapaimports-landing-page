@@ -70,7 +70,8 @@ export function HowItWorks() {
           {/* Animated connecting line — desktop only */}
           <div
             ref={lineRef}
-            className="hidden lg:block absolute top-10 left-[calc(16.67%)] right-[calc(16.67%)] h-px bg-rapa-red"
+            className="hidden lg:block absolute top-10 left-[calc(16.67%)] right-[calc(16.67%)] h-[2px]"
+            style={{ background: 'linear-gradient(90deg, rgba(204,0,0,0.2), #CC0000 30%, #CC0000 70%, rgba(204,0,0,0.2))', boxShadow: '0 0 10px rgba(204,0,0,0.35)' }}
             aria-hidden
           />
 
@@ -81,11 +82,15 @@ export function HowItWorks() {
                 delay={i * 0.15}
                 className="flex flex-col items-center text-center"
               >
-                <div className="relative mb-6">
-                  <div className="w-20 h-20 rounded-full bg-rapa-elevated border border-rapa-border flex items-center justify-center">
-                    <Icon size={28} className="text-rapa-red" />
+                <div className="relative mb-6 flex items-center justify-center">
+                  {/* Ghost number — editorial automotive style */}
+                  <span className="absolute font-display font-black text-[100px] leading-none text-rapa-red/10 select-none pointer-events-none -top-6">
+                    {number}
+                  </span>
+                  <div className="relative w-24 h-24 rounded-full bg-rapa-elevated border border-rapa-border flex items-center justify-center z-10">
+                    <Icon size={32} className="text-rapa-red" />
                   </div>
-                  <span className="absolute -top-2 -right-2 font-mono text-xs text-rapa-red bg-rapa-black border border-rapa-border rounded px-1.5 py-0.5">
+                  <span className="absolute -top-2 -right-2 font-mono text-[10px] text-rapa-red bg-rapa-black border border-rapa-border rounded px-1.5 py-0.5 z-20">
                     {number}
                   </span>
                 </div>
@@ -93,6 +98,9 @@ export function HowItWorks() {
                   {title}
                 </h3>
                 <p className="font-body text-rapa-muted max-w-xs leading-relaxed">{description}</p>
+                <span className="font-mono text-[10px] text-rapa-red/60 uppercase tracking-[0.2em] mt-2">
+                  {number === '01' ? '< 5 min' : number === '02' ? 'Mismo día' : '24-48 hs'}
+                </span>
               </ScrollReveal>
             ))}
           </div>

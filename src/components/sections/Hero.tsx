@@ -13,10 +13,25 @@ export function Hero() {
       className="relative min-h-screen flex flex-col items-center justify-center grain-overlay overflow-hidden bg-rapa-black"
       aria-label="Sección principal"
     >
-      {/* Radial glow */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-rapa-red/5 blur-3xl" />
-      </div>
+      {/* Technical grid background — automotive blueprint aesthetic */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(204,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(204,0,0,0.03) 1px, transparent 1px)',
+          backgroundSize: '80px 80px',
+        }}
+        aria-hidden
+      />
+
+      {/* Glow principal más intenso */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-rapa-red/10 blur-[120px] pointer-events-none"
+        animate={{ opacity: [0.6, 1, 0.6], scale: [0.97, 1.03, 0.97] }}
+        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+        aria-hidden
+      />
+      {/* Glow inferior dramático */}
+      <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-rapa-red/8 to-transparent pointer-events-none" aria-hidden />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-24 pb-16">
 
@@ -96,12 +111,13 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 8, 0] }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+        animate={{ y: [0, 6, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         aria-hidden
       >
-        <ChevronDown size={24} className="text-rapa-muted" />
+        <span className="font-mono text-[9px] tracking-[0.35em] text-rapa-muted/50 uppercase">Scroll</span>
+        <ChevronDown size={18} className="text-rapa-muted/60" />
       </motion.div>
     </section>
   )

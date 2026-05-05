@@ -1,3 +1,6 @@
+'use client'
+
+import { motion } from 'framer-motion'
 import { Star } from 'lucide-react'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { TESTIMONIALS } from '@/lib/constants'
@@ -8,7 +11,7 @@ function StarRating({ rating }: { rating: number }) {
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
-          size={14}
+          size={18}
           className={
             i < rating ? 'text-rapa-red fill-rapa-red' : 'text-rapa-border fill-rapa-border'
           }
@@ -27,7 +30,15 @@ function TestimonialCard({
 }) {
   return (
     <ScrollReveal delay={index * 0.12}>
-      <article className="flex flex-col gap-4 bg-rapa-elevated rounded-lg p-6 border border-rapa-border h-full">
+      <motion.article
+        className="flex flex-col gap-4 bg-rapa-elevated rounded-lg p-6 border border-rapa-border h-full relative overflow-hidden"
+        whileHover={{ y: -6, boxShadow: '0 20px 40px rgba(204,0,0,0.12)' }}
+        transition={{ duration: 0.25, ease: 'easeOut' }}
+      >
+        <span className="absolute top-1 right-4 font-display text-[110px] leading-none text-rapa-red/8 select-none pointer-events-none" aria-hidden>
+          &ldquo;
+        </span>
+
         <StarRating rating={testimonial.rating} />
 
         <blockquote className="font-body text-white/90 text-sm leading-relaxed flex-1">
@@ -36,17 +47,20 @@ function TestimonialCard({
 
         <div className="flex items-center gap-3 pt-4 border-t border-rapa-border">
           <div
-            className="w-10 h-10 rounded-full bg-rapa-red flex items-center justify-center font-display font-bold text-white text-lg shrink-0"
+            className="w-12 h-12 rounded-full flex items-center justify-center font-display font-bold text-white text-xl shrink-0 border border-rapa-red/50 shadow-[0_0_14px_rgba(204,0,0,0.3)]"
+            style={{ background: 'linear-gradient(135deg, #CC0000, rgba(204,0,0,0.4))' }}
             aria-hidden
           >
             {testimonial.avatar}
           </div>
           <div>
             <p className="font-body font-semibold text-white text-sm">{testimonial.name}</p>
-            <p className="font-body text-rapa-muted text-xs">Compró: {testimonial.product}</p>
+            <span className="inline-flex items-center font-mono text-[10px] uppercase tracking-widest bg-rapa-red/10 border border-rapa-red/30 rounded-full px-2.5 py-0.5 text-rapa-red">
+              {testimonial.product}
+            </span>
           </div>
         </div>
-      </article>
+      </motion.article>
     </ScrollReveal>
   )
 }

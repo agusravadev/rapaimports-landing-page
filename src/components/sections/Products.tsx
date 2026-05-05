@@ -21,7 +21,7 @@ function ProductImage({ product }: { product: Product }) {
           alt={`${product.name} — RAPA IMPORTS`}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-contain p-4 sm:p-6 transition-transform duration-500 group-hover:scale-[1.07]"
+          className="object-contain p-4 sm:p-6 transition-transform duration-500 group-hover:scale-[1.07] drop-shadow-[0_8px_24px_rgba(204,0,0,0.2)]"
         />
 
         {/* Transparent PNGs: subtle bottom gradient blending product into card body */}
