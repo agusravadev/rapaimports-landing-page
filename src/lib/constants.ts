@@ -99,49 +99,49 @@ export const FAQ_ITEMS = [
     id: 'pago',
     question: '¿Cuáles son los métodos de pago?',
     answer:
-      'Aceptamos transferencia bancaria, efectivo y los principales medios de pago digitales. Consultanos por más detalles.',
+      'Aceptamos cualquier método de pago: transferencia bancaria, efectivo, Mercado Pago, tarjetas y también dólares (USD). Elegí el que más te convenga.',
   },
   {
     id: 'envios',
     question: '¿Hacen envíos a todo el país?',
     answer:
-      'Sí, realizamos envíos a todo el territorio argentino a través de correo privado. El costo varía según la ubicación.',
+      'Sí, enviamos a todo el territorio argentino a través de Andreani, Via Cargo y Correo Argentino. El costo de envío está a cargo del cliente y varía según el destino y el peso del paquete.',
   },
   {
     id: 'tiempo-encargo',
     question: '¿Cuánto tarda un pedido por encargo?',
     answer:
-      'Los tiempos varían según el producto y su origen. En promedio entre 15 y 30 días hábiles. Te informamos el plazo exacto al confirmar el pedido.',
+      'Los pedidos por encargo tienen un plazo aproximado de 30 días hábiles. Te confirmamos el tiempo exacto al momento de coordinar el pedido.',
   },
   {
     id: 'garantia',
     question: '¿Los productos tienen garantía?',
     answer:
-      'Sí, todos nuestros productos cuentan con garantía por defectos de fabricación. Ante cualquier problema, nos contactás y lo resolvemos.',
+      'Sí, ofrecemos 3 meses de garantía. La garantía aplica cuando la instalación del producto es realizada por nuestros talleres recomendados o por talleres que forman parte de nuestra red de distribución.',
+  },
+  {
+    id: 'seña-encargo',
+    question: '¿Se requiere seña para hacer un encargo?',
+    answer:
+      'Sí. Para confirmar un encargo solicitamos una seña del 20% del valor del producto. El saldo restante se abona al momento de recibir el pedido.',
   },
   {
     id: 'como-encargar',
     question: '¿Cómo hago un pedido por encargo?',
     answer:
-      'Escribinos por WhatsApp con el producto que querés. Te confirmamos disponibilidad y precio, y coordinamos el pago y el plazo de entrega.',
+      'Escribinos por WhatsApp con el producto que buscás. Te confirmamos precio y disponibilidad, coordinamos la seña del 20% para reservarlo y te mantenemos informado durante todo el proceso.',
   },
   {
     id: 'stock-vs-encargo',
     question: '¿Qué diferencia hay entre stock y encargo?',
     answer:
-      'El stock disponible está en nuestro depósito y se envía de inmediato. El encargo implica importar el producto puntualmente para vos — más tiempo, pero acceso a referencias exclusivas.',
-  },
-  {
-    id: 'instalacion',
-    question: '¿Instalan los productos?',
-    answer:
-      'No instalamos directamente, pero contamos con talleres asociados que pueden hacerlo. Consultanos y te damos opciones cerca tuyo.',
+      'El stock disponible está en nuestro depósito y se despacha de inmediato. El encargo es para productos que no tenemos en el momento — los importamos especialmente para vos, con acceso a referencias exclusivas o difíciles de conseguir en el mercado local.',
   },
   {
     id: 'personalizacion',
     question: '¿Puedo personalizar un producto?',
     answer:
-      'Sí, varios de nuestros productos son personalizables (materiales, colores, diseño). Contactanos y te asesoramos según lo que estás buscando.',
+      'Sí, muchos de nuestros productos son personalizables en materiales, colores y diseño. Contactanos y te asesoramos según el estilo que estás buscando para tu auto.',
   },
 ] as const
 
