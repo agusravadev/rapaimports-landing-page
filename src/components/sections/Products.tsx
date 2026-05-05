@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { MessageCircle } from 'lucide-react'
 import { Badge, badgeVariantFromLabel } from '@/components/ui/Badge'
@@ -7,6 +8,39 @@ import { Button } from '@/components/ui/Button'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { PRODUCTS, type Product } from '@/lib/constants'
 import { buildProductWhatsAppUrl } from '@/lib/whatsapp'
+
+function ProductImage({ product }: { product: Product }) {
+  if (product.image) {
+    return (
+      <div className="relative w-full h-full">
+        <Image
+          src={product.image}
+          alt={`${product.name} — RAPA IMPORTS`}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-contain p-5 transition-transform duration-500 group-hover:scale-105"
+        />
+        {/* Vignette: fades white bg edges into the dark card */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'radial-gradient(ellipse at center, transparent 45%, #0A0A0A 90%)',
+          }}
+          aria-hidden
+        />
+      </div>
+    )
+  }
+
+  return (
+    <div className="w-full h-full bg-gradient-to-br from-rapa-subtle to-rapa-black flex items-center justify-center">
+      <span className="font-display font-extrabold text-6xl text-rapa-border uppercase select-none">
+        {product.name[0]}
+      </span>
+    </div>
+  )
+}
 
 function ProductCard({ product, index }: { product: Product; index: number }) {
   return (
@@ -16,23 +50,20 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.2, ease: 'easeOut' }}
       >
-        {/* Placeholder image — replaced with next/image once client provides photos */}
-        <div className="relative aspect-[4/3] bg-rapa-subtle overflow-hidden">
-          <div className="w-full h-full bg-gradient-to-br from-rapa-subtle to-rapa-black flex items-center justify-center">
-            <span className="font-display font-extrabold text-6xl text-rapa-border uppercase select-none">
-              {product.name[0]}
-            </span>
-          </div>
+        <div className="relative aspect-[4/3] bg-rapa-elevated overflow-hidden">
+          <ProductImage product={product} />
+
+          {/* Red tint on hover */}
           <motion.div
-            className="absolute inset-0 bg-rapa-red/10"
+            className="absolute inset-0 bg-rapa-red/10 pointer-events-none"
             initial={{ opacity: 0 }}
             whileHover={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
           />
-          <div className="absolute inset-0 rounded-t-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[inset_0_0_0_1px_#CC0000]" />
+          {/* Red border on hover */}
+          <div className="absolute inset-0 rounded-t-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[inset_0_0_0_1px_#CC0000] pointer-events-none" />
         </div>
 
-        {/* Card body */}
         <div className="flex flex-col gap-3 p-5 flex-1">
           <div className="flex items-start justify-between gap-2">
             <h3 className="font-display font-extrabold text-xl uppercase text-white">

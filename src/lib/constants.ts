@@ -19,6 +19,7 @@ export const PRODUCTS = [
     description:
       'Volantes deportivos de alta calidad con distintos materiales y estilos. Personalizables a tu gusto.',
     badge: 'EN STOCK' as const,
+    image: '/images/products/volante-modelo.jpeg' as string | null,
   },
   {
     id: 'alerones',
@@ -26,6 +27,7 @@ export const PRODUCTS = [
     description:
       'Alerones de importación que combinan diseño aerodinámico y acabado premium.',
     badge: 'EN STOCK' as const,
+    image: '/images/products/aleron.png' as string | null,
   },
   {
     id: 'pomos',
@@ -33,6 +35,7 @@ export const PRODUCTS = [
     description:
       'Pomos para caja automática con materiales premium y diseños exclusivos que elevan tu interior.',
     badge: 'EN STOCK' as const,
+    image: '/images/products/pomo-botonera.png' as string | null,
   },
   {
     id: 'difusores',
@@ -40,6 +43,7 @@ export const PRODUCTS = [
     description:
       'Difusores traseros que transforman la estética de tu vehículo con un toque agresivo y deportivo.',
     badge: 'ENCARGO DISPONIBLE' as const,
+    image: null,
   },
   {
     id: 'opticas',
@@ -47,11 +51,18 @@ export const PRODUCTS = [
     description:
       'Ópticas delanteras y traseras de importación con tecnología LED y diseño de vanguardia.',
     badge: 'ENCARGO DISPONIBLE' as const,
+    image: '/images/products/opticas-traseras.png' as string | null,
   },
-] as const
+]
 
-export type Product = (typeof PRODUCTS)[number]
-export type BadgeType = Product['badge']
+export type BadgeType = 'EN STOCK' | 'ENCARGO DISPONIBLE'
+export type Product = {
+  id: string
+  name: string
+  description: string
+  badge: BadgeType
+  image: string | null
+}
 
 export const TESTIMONIALS = [
   {
