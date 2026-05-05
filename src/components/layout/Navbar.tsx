@@ -2,10 +2,9 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { Menu } from 'lucide-react'
+import { Menu, MessageCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useIsScrolled } from '@/hooks/useScrollY'
-import { Button } from '@/components/ui/Button'
 import { MobileMenu } from './MobileMenu'
 import { cn } from '@/lib/utils'
 import { GENERAL_WA_URL } from '@/lib/whatsapp'
@@ -18,57 +17,85 @@ const NAV_LINKS = [
   { label: 'Ubicaciones', href: '#ubicaciones' },
 ]
 
+function NavLink({ label, href }: { label: string; href: string }) {
+  return (
+    <a
+      href={href}
+      className="relative group font-body text-sm font-medium text-rapa-muted hover:text-white transition-colors duration-200 uppercase tracking-widest py-1"
+    >
+      {label}
+      {/* Animated red underline sliding left → right on hover */}
+      <span className="absolute bottom-0 left-0 h-px w-0 bg-rapa-red group-hover:w-full transition-all duration-300 ease-out" />
+    </a>
+  )
+}
+
 export function Navbar() {
-  const isScrolled = useIsScrolled()
+  const isScrolled = useIsScrolled(60)
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <>
       <motion.header
         className={cn(
-          'fixed top-0 left-0 right-0 z-30 transition-all duration-300',
+          'fixed top-0 left-0 right-0 z-30 transition-colors duration-300',
           isScrolled
-            ? 'bg-black/95 backdrop-blur-md border-b border-rapa-border'
+            ? 'bg-black/90 backdrop-blur-xl border-b border-rapa-border shadow-[0_1px_0_0_rgba(204,0,0,0.15)]'
             : 'bg-transparent'
         )}
-        initial={{ y: -100 }}
+        initial={{ y: -120 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+        transition={{ duration: 0.55, ease: [0.21, 0.47, 0.32, 0.98] }}
         role="banner"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          <a href="#" aria-label="RAPA IMPORTS — inicio">
-            <Image
-              src="/logo.png"
-              alt="RAPA IMPORTS"
-              width={200}
-              height={72}
-              className="h-16 w-auto object-contain"
-              priority
-            />
+        {/* Accent line at very top — always visible */}
+        <div className="h-[2px] w-full bg-rapa-red" aria-hidden />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          {/* Logo — shrinks on scroll */}
+          <a href="#" aria-label="RAPA IMPORTS — inicio" className="flex items-center shrink-0">
+            <motion.div
+              animate={{ height: isScrolled ? 72 : 108 }}
+              transition={{ duration: 0.35, ease: 'easeInOut' }}
+              className="flex items-center"
+            >
+              <Image
+                src="/logo.png"
+                alt="RAPA IMPORTS"
+                width={300}
+                height={108}
+                className="h-full w-auto object-contain"
+                priority
+              />
+            </motion.div>
           </a>
 
-          <nav className="hidden md:flex items-center gap-8" aria-label="Navegación principal">
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-8 lg:gap-10" aria-label="Navegación principal">
             {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="font-body text-sm font-medium text-rapa-muted hover:text-white transition-colors uppercase tracking-wide"
-              >
-                {link.label}
-              </a>
+              <NavLink key={link.href} label={link.label} href={link.href} />
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
-            <Button
+          {/* CTA + hamburger */}
+          <div className="flex items-center gap-3 shrink-0">
+            <motion.a
               href={GENERAL_WA_URL()}
-              variant="whatsapp"
-              size="sm"
-              className="hidden sm:inline-flex"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                'hidden sm:inline-flex items-center gap-2 font-display font-bold text-sm uppercase tracking-wider rounded transition-all duration-300 px-4 py-2.5',
+                isScrolled
+                  ? 'bg-[#25D366] text-white hover:bg-[#20BC5A]'
+                  : 'border border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white'
+              )}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
             >
+              <MessageCircle size={15} />
               WhatsApp
-            </Button>
+            </motion.a>
+
             <button
               onClick={() => setMenuOpen(true)}
               className="md:hidden p-2 text-white hover:text-rapa-red transition-colors"
