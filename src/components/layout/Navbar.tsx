@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { Menu } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { useScrollY } from '@/hooks/useScrollY'
+import { useIsScrolled } from '@/hooks/useScrollY'
 import { Button } from '@/components/ui/Button'
 import { MobileMenu } from './MobileMenu'
 import { cn } from '@/lib/utils'
@@ -19,9 +19,8 @@ const NAV_LINKS = [
 ]
 
 export function Navbar() {
-  const scrollY = useScrollY()
+  const isScrolled = useIsScrolled()
   const [menuOpen, setMenuOpen] = useState(false)
-  const isScrolled = scrollY > 60
 
   return (
     <>

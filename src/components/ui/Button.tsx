@@ -50,12 +50,12 @@ export function Button({
   )
 
   if (href) {
+    const isExternal = href.startsWith('http') || href.startsWith('//')
     return (
       <a
         href={href}
         className={classes}
-        target="_blank"
-        rel="noopener noreferrer"
+        {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
         {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
         {children}

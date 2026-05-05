@@ -4,12 +4,14 @@ import { useRef, useEffect } from 'react'
 
 export function useMagneticButton<T extends HTMLElement = HTMLElement>(strength = 0.3) {
   const ref = useRef<T>(null)
+  const isNear = useRef(false)
 
   useEffect(() => {
     const el = ref.current
     if (!el) return
 
     const onMouseMove = (e: MouseEvent) => {
+      if (!isNear.current) return
       const rect = el.getBoundingClientRect()
       const cx = rect.left + rect.width / 2
       const cy = rect.top + rect.height / 2
@@ -21,17 +23,17 @@ export function useMagneticButton<T extends HTMLElement = HTMLElement>(strength 
       if (dist < maxDist) {
         const factor = (1 - dist / maxDist) * strength
         el.style.transform = `translate(${dx * factor}px, ${dy * factor}px)`
-      } else {
-        el.style.transform = 'translate(0, 0)'
       }
     }
 
     const onMouseLeave = () => {
+      isNear.current = false
       el.style.transition = 'transform 0.4s ease'
       el.style.transform = 'translate(0, 0)'
     }
 
     const onMouseEnter = () => {
+      isNear.current = true
       el.style.transition = 'transform 0.1s ease'
     }
 

@@ -2,14 +2,17 @@
 
 import { useEffect, useState } from 'react'
 
-export function useScrollY() {
-  const [scrollY, setScrollY] = useState(0)
+export function useIsScrolled(threshold = 60): boolean {
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY)
+    const onScroll = () => {
+      const past = window.scrollY > threshold
+      setIsScrolled((prev) => (prev === past ? prev : past))
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [threshold])
 
-  return scrollY
+  return isScrolled
 }
