@@ -36,14 +36,14 @@ export function Navbar() {
         transition={{ duration: 0.5, ease: 'easeOut' }}
         role="banner"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <a href="#" aria-label="RAPA IMPORTS — inicio">
             <Image
               src="/logo.png"
               alt="RAPA IMPORTS"
-              width={140}
-              height={48}
-              className="h-10 w-auto object-contain"
+              width={200}
+              height={72}
+              className="h-16 w-auto object-contain"
               priority
             />
           </a>

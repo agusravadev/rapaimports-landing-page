@@ -51,9 +51,9 @@ export function Footer() {
           <Image
             src="/logo.png"
             alt="RAPA IMPORTS"
-            width={160}
-            height={56}
-            className="h-12 w-auto object-contain"
+            width={220}
+            height={80}
+            className="h-20 w-auto object-contain"
           />
 
           <div className="flex items-center gap-6" role="list" aria-label="Redes sociales">
