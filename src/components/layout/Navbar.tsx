@@ -60,7 +60,7 @@ export function Navbar() {
               className="flex items-center"
             >
               <Image
-                src="/logo.png"
+                src="/logo-rapaimports-sin-fondo.png"
                 alt="RAPA IMPORTS"
                 width={300}
                 height={108}

@@ -35,7 +35,7 @@ export const PRODUCTS = [
     description:
       'Pomos para caja automática con materiales premium y diseños exclusivos que elevan tu interior.',
     badge: 'EN STOCK' as const,
-    image: '/images/products/pomo-botonera.png' as string | null,
+    image: '/images/products/pomo-modelo.jpeg' as string | null,
   },
   {
     id: 'difusores',
@@ -43,7 +43,7 @@ export const PRODUCTS = [
     description:
       'Difusores traseros que transforman la estética de tu vehículo con un toque agresivo y deportivo.',
     badge: 'ENCARGO DISPONIBLE' as const,
-    image: null,
+    image: '/images/products/difusor-gti-modelo.png' as string | null,
   },
   {
     id: 'opticas',
@@ -51,7 +51,7 @@ export const PRODUCTS = [
     description:
       'Ópticas delanteras y traseras de importación con tecnología LED y diseño de vanguardia.',
     badge: 'ENCARGO DISPONIBLE' as const,
-    image: '/images/products/opticas-traseras.png' as string | null,
+    image: '/images/products/opticas-gti-modelo.png' as string | null,
   },
 ]
 

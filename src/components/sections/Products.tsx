@@ -9,8 +9,11 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { PRODUCTS, type Product } from '@/lib/constants'
 import { buildProductWhatsAppUrl } from '@/lib/whatsapp'
 
+const isPng = (src: string) => src.toLowerCase().endsWith('.png')
+
 function ProductImage({ product }: { product: Product }) {
   if (product.image) {
+    const transparent = isPng(product.image)
     return (
       <div className="relative w-full h-full">
         <Image
@@ -18,16 +21,34 @@ function ProductImage({ product }: { product: Product }) {
           alt={`${product.name} — RAPA IMPORTS`}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-contain p-5 transition-transform duration-500 group-hover:scale-105"
+          className="object-contain p-4 sm:p-6 transition-transform duration-500 group-hover:scale-[1.07]"
         />
-        {/* Vignette: fades white bg edges into the dark card */}
-        <div
+
+        {/* Transparent PNGs: subtle bottom gradient blending product into card body */}
+        {transparent ? (
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: 'linear-gradient(to top, #0A0A0A 0%, transparent 35%)' }}
+            aria-hidden
+          />
+        ) : (
+          /* JPEGs with potential white bg: radial vignette darkens edges */
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: 'radial-gradient(ellipse at center, transparent 40%, #0A0A0A 88%)' }}
+            aria-hidden
+          />
+        )}
+
+        {/* Red glow on hover — more visible for transparent PNGs */}
+        <motion.div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background:
-              'radial-gradient(ellipse at center, transparent 45%, #0A0A0A 90%)',
+            background: 'radial-gradient(ellipse at center, rgba(204,0,0,0.12) 0%, transparent 70%)',
           }}
-          aria-hidden
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          transition={{ duration: 0.35 }}
         />
       </div>
     )
@@ -46,31 +67,28 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
   return (
     <ScrollReveal delay={index * 0.1}>
       <motion.article
-        className="group flex flex-col bg-rapa-elevated rounded-lg overflow-hidden border border-rapa-border h-full"
-        whileHover={{ scale: 1.02 }}
-        transition={{ duration: 0.2, ease: 'easeOut' }}
+        className="group flex flex-col bg-rapa-elevated rounded-xl overflow-hidden border border-rapa-border h-full"
+        whileHover={{
+          scale: 1.02,
+          boxShadow: '0 0 28px rgba(204,0,0,0.18), 0 0 0 1px #CC0000',
+        }}
+        transition={{ duration: 0.22, ease: 'easeOut' }}
       >
-        <div className="relative aspect-[4/3] bg-rapa-elevated overflow-hidden">
+        {/* Image area */}
+        <div className="relative aspect-[4/3] bg-rapa-black overflow-hidden">
           <ProductImage product={product} />
 
-          {/* Red tint on hover */}
-          <motion.div
-            className="absolute inset-0 bg-rapa-red/10 pointer-events-none"
-            initial={{ opacity: 0 }}
-            whileHover={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          />
-          {/* Red border on hover */}
-          <div className="absolute inset-0 rounded-t-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[inset_0_0_0_1px_#CC0000] pointer-events-none" />
-        </div>
-
-        <div className="flex flex-col gap-3 p-5 flex-1">
-          <div className="flex items-start justify-between gap-2">
-            <h3 className="font-display font-extrabold text-xl uppercase text-white">
-              {product.name}
-            </h3>
+          {/* Badge — positioned over image top-right */}
+          <div className="absolute top-3 right-3 z-10">
             <Badge variant={badgeVariantFromLabel(product.badge)}>{product.badge}</Badge>
           </div>
+        </div>
+
+        {/* Card body */}
+        <div className="flex flex-col gap-3 p-5 flex-1">
+          <h3 className="font-display font-extrabold text-xl uppercase text-white tracking-wide">
+            {product.name}
+          </h3>
 
           <p className="font-body text-sm text-rapa-muted leading-relaxed flex-1">
             {product.description}
@@ -80,7 +98,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             href={buildProductWhatsAppUrl(product.name)}
             variant="primary"
             size="sm"
-            className="w-full mt-2"
+            className="w-full mt-1"
           >
             <MessageCircle size={16} />
             Consultar
