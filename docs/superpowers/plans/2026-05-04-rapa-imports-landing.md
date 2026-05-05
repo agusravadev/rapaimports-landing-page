@@ -2148,7 +2148,7 @@ export function CTAFinal() {
           Empezá hoy
         </p>
         <h2 className="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl uppercase text-white leading-none mb-6">
-          ¿Listo para transformar tu auto?
+          ¿Listo para personalizar tu auto?
         </h2>
         <p className="font-body text-white/80 text-lg max-w-xl mx-auto mb-10">
           Escribinos y te asesoramos sin compromiso. Stock disponible y encargos exclusivos.

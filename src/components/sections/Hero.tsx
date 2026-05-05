@@ -116,7 +116,7 @@ export function Hero() {
         transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         aria-hidden
       >
-        <span className="font-mono text-[9px] tracking-[0.35em] text-rapa-muted/50 uppercase">Scroll</span>
+        <span className="font-mono text-[9px] tracking-[0.35em] text-rapa-muted/50 uppercase">Deslizá</span>
         <ChevronDown size={18} className="text-rapa-muted/60" />
       </motion.div>
     </section>

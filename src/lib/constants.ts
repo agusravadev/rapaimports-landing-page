@@ -35,7 +35,7 @@ export const PRODUCTS = [
     description:
       'Pomos para caja automática con materiales premium y diseños exclusivos que elevan tu interior.',
     badge: 'EN STOCK' as const,
-    image: '/images/products/pomo-modelo.jpeg' as string | null,
+    image: '/images/products/pomo-botonera-opt.png' as string | null,
   },
   {
     id: 'difusores',
@@ -51,7 +51,7 @@ export const PRODUCTS = [
     description:
       'Ópticas delanteras y traseras de importación con tecnología LED y diseño de vanguardia.',
     badge: 'ENCARGO DISPONIBLE' as const,
-    image: '/images/products/opticas-gti-modelo.png' as string | null,
+    image: '/images/products/opticas-traseras-opt.png' as string | null,
   },
 ]
 
@@ -88,7 +88,7 @@ export const TESTIMONIALS = [
     name: 'Nicolás Ferraro',
     product: 'Alerón + Difusor fibra de carbono · Golf GTI',
     review:
-      'El combo alerón y difusor en fibra de carbono le dio al GTI otro carácter. Se nota que son piezas de calidad desde que las tenés en la mano. La atención fue excelente y el envío rapidísimo.',
+      'El combo alerón y difusor en fibra de carbono le dio al GTI otro toque. Se nota que son piezas de calidad desde que las tenés en la mano. La atención fue excelente y el envío rapidísimo.',
     rating: 5,
     avatar: 'N',
   },
