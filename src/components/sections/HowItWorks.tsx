@@ -10,24 +10,24 @@ gsap.registerPlugin(ScrollTrigger)
 
 const STEPS = [
   {
-    number: '01',
+    number: '1',
     title: 'Consultá',
     description:
       'Escribinos por WhatsApp o redes sociales. Te asesoramos sin compromiso sobre el producto que buscás.',
     Icon: MessageCircle,
   },
   {
-    number: '02',
+    number: '2',
     title: 'Elegís',
     description:
-      'Del stock disponible para entrega inmediata, o lo importamos especialmente para vos con acceso a referencias exclusivas.',
+      'Del stock disponible para entrega inmediata, o lo importamos exclusivamente para vos.',
     Icon: Package,
   },
   {
-    number: '03',
+    number: '3',
     title: 'Recibís',
     description:
-      'En tu puerta o en el taller de tu elección. Rápido, seguro y con garantía en cada producto.',
+      'En tu puerta o retirás por correo. Rápido, seguro y con garantía en cada producto.',
     Icon: Truck,
   },
 ]
@@ -99,7 +99,7 @@ export function HowItWorks() {
                 </h3>
                 <p className="font-body text-rapa-muted max-w-xs leading-relaxed">{description}</p>
                 <span className="font-mono text-[10px] text-rapa-red/60 uppercase tracking-[0.2em] mt-2">
-                  {number === '01' ? '< 5 min' : number === '02' ? 'Mismo día' : '24-48 hs'}
+                  {number === '1' ? '' : number === '2' ? '' : ''}
                 </span>
               </ScrollReveal>
             ))}

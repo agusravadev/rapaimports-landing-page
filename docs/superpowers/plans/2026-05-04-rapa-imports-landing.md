@@ -1736,17 +1736,17 @@ const STEPS = [
     Icon: MessageCircle,
   },
   {
-    number: '02',
+    number: '2',
     title: 'Elegís',
     description:
-      'Del stock disponible para entrega inmediata, o lo importamos especialmente para vos con acceso a referencias exclusivas.',
+      'Del stock disponible para entrega inmediata, o lo importamos exclusivamente para vos.',
     Icon: Package,
   },
   {
-    number: '03',
+    number: '3',
     title: 'Recibís',
     description:
-      'En tu puerta o en el taller de tu elección. Rápido, seguro y con garantía en cada producto.',
+      'En la puerta de tu casa o retirás por correo. Rápido, seguro y con garantía en cada producto.',
     Icon: Truck,
   },
 ]
