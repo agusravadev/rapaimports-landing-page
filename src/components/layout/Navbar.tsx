@@ -21,7 +21,7 @@ function NavLink({ label, href }: { label: string; href: string }) {
   return (
     <a
       href={href}
-      className="relative group font-body text-xs font-semibold text-rapa-muted hover:text-white transition-colors duration-200 uppercase tracking-widest whitespace-nowrap py-1"
+      className="relative group font-body text-sm font-semibold text-rapa-muted hover:text-white transition-colors duration-200 uppercase tracking-wider whitespace-nowrap py-1"
     >
       {label}
       <span className="absolute bottom-0 left-0 h-px w-0 bg-rapa-red group-hover:w-full transition-all duration-300 ease-out" />
@@ -36,7 +36,7 @@ function WhatsAppButton({ scrolled }: { scrolled: boolean }) {
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        'hidden sm:inline-flex items-center gap-2.5 font-display font-bold text-xs uppercase tracking-widest rounded-full px-5 py-2.5 transition-all duration-300',
+        'hidden sm:inline-flex items-center gap-2.5 font-display font-bold text-sm uppercase tracking-wider rounded-full px-6 py-3 transition-all duration-300',
         scrolled
           ? 'bg-[#25D366] text-white shadow-[0_0_18px_rgba(37,211,102,0.3)] hover:shadow-[0_0_28px_rgba(37,211,102,0.5)]'
           : 'border border-[#25D366]/70 text-[#25D366] hover:bg-[#25D366] hover:text-white hover:shadow-[0_0_18px_rgba(37,211,102,0.3)]'
