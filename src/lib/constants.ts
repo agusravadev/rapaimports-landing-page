@@ -67,30 +67,30 @@ export type Product = {
 export const TESTIMONIALS = [
   {
     id: 1,
-    name: 'Martín G.',
-    product: 'Volante',
+    name: 'Federico Petrillo',
+    product: 'Volante fibra de carbono · Golf 1.4',
     review:
-      'Calidad increíble, llegó en perfectas condiciones y el acabado es de otro nivel. 100% recomendable.',
+      'La mejor opción fue confiar en ustedes. De varios volantes que vi en distintos lugares me decidí 100% por este tanto por el precio como por la calidad. No puedo estar más satisfecho.',
     rating: 5,
-    avatar: 'M',
+    avatar: 'F',
   },
   {
     id: 2,
-    name: 'Lucas R.',
-    product: 'Alerón',
+    name: 'Gian Palmiotti',
+    product: 'Volante fibra de carbono · Vento GLI',
     review:
-      'Lo encargué y llegó antes de lo esperado. La atención fue excelente desde el primer mensaje.',
+      'La estética del auto cambió rotundamente. Además de que queda muy lindo, la calidad de los materiales es de otro nivel. Da placer usar el volante.',
     rating: 5,
-    avatar: 'L',
+    avatar: 'G',
   },
   {
     id: 3,
-    name: 'Federico P.',
-    product: 'Ópticas LED',
+    name: 'Nicolás Ferraro',
+    product: 'Alerón + Difusor fibra de carbono · Golf GTI',
     review:
-      'Las ópticas transformaron completamente el frente del auto. Materiales de primera calidad.',
+      'El combo alerón y difusor en fibra de carbono le dio al GTI otro carácter. Se nota que son piezas de calidad desde que las tenés en la mano. La atención fue excelente y el envío rapidísimo.',
     rating: 5,
-    avatar: 'F',
+    avatar: 'N',
   },
 ] as const
 
