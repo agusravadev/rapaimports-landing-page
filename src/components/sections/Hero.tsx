@@ -1,7 +1,5 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
 import { motion } from 'framer-motion'
 import { ChevronDown, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
@@ -10,20 +8,6 @@ import { SITE } from '@/lib/constants'
 import { GENERAL_WA_URL } from '@/lib/whatsapp'
 
 export function Hero() {
-  const lineTopRef = useRef<HTMLDivElement>(null)
-  const lineBottomRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        [lineTopRef.current, lineBottomRef.current],
-        { scaleX: 0, transformOrigin: 'left center' },
-        { scaleX: 1, duration: 0.8, ease: 'power2.out', stagger: 0.15, delay: 0.5 }
-      )
-    })
-    return () => { ctx.revert() }
-  }, [])
-
   return (
     <section
       className="relative min-h-screen flex flex-col items-center justify-center grain-overlay overflow-hidden bg-rapa-black"
@@ -35,8 +19,6 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-24 pb-16">
-        {/* Top red line */}
-        <div ref={lineTopRef} className="h-px w-48 sm:w-72 bg-rapa-red mx-auto mb-8" aria-hidden />
 
         <motion.h1
           className="font-display font-extrabold text-6xl sm:text-7xl lg:text-8xl uppercase leading-none tracking-tight"
@@ -49,14 +31,11 @@ export function Hero() {
           <span className="text-gradient-red">al siguiente nivel</span>
         </motion.h1>
 
-        {/* Bottom red line */}
-        <div ref={lineBottomRef} className="h-px w-48 sm:w-72 bg-rapa-red mx-auto mt-8 mb-6" aria-hidden />
-
         <motion.p
-          className="font-body text-lg sm:text-xl text-rapa-muted max-w-2xl mx-auto"
+          className="font-body text-lg sm:text-xl text-rapa-muted max-w-2xl mx-auto mt-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
           {SITE.description}
         </motion.p>
@@ -67,11 +46,21 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <Button href={GENERAL_WA_URL()} variant="whatsapp" size="lg">
-            <MessageCircle size={20} />
+          <motion.a
+            href={GENERAL_WA_URL()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-[#25D366] text-white font-display font-bold uppercase tracking-wider text-base px-8 py-4 rounded-full shadow-[0_0_24px_rgba(37,211,102,0.3)] hover:shadow-[0_0_36px_rgba(37,211,102,0.5)] transition-shadow duration-300"
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+          >
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-60" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-white" />
+            </span>
             Consultar por WhatsApp
-          </Button>
-          <Button href="#productos" variant="secondary" size="lg">
+          </motion.a>
+          <Button href="#productos" variant="secondary" size="lg" className="rounded-full">
             Ver productos
             <ChevronDown size={20} />
           </Button>
