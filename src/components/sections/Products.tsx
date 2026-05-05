@@ -75,7 +75,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
         transition={{ duration: 0.22, ease: 'easeOut' }}
       >
         {/* Image area */}
-        <div className="relative aspect-[4/3] bg-rapa-black overflow-hidden">
+        <div className="relative aspect-square bg-rapa-black overflow-hidden">
           <ProductImage product={product} />
 
           {/* Badge — positioned over image top-right */}
